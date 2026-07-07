@@ -28,23 +28,6 @@ android {
     }
 }
 
-repositories {
-    maven { url 'https://repo.dairy.foundation/releases' }
-    maven { url 'https://repo.dairy.foundation/' }
-    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
-}
-
 dependencies {
     implementation project(':FtcRobotController')
-
-    implementation 'org.psilynx.psikit:core:0.2.0-beta2'
-    implementation 'org.psilynx.psikit:ftc:0.2.0-beta2'
-
-    implementation 'dev.nextftc.v2:robot:0.0.2-SNAPSHOT'
-
-    implementation 'com.pedropathing:ftc:2.1.2'
-    implementation 'com.pedropathing:telemetry:1.0.0'
-    implementation 'com.pedropathing:ivy:1.0.0'
-
-    implementation "org.ejml:ejml-simple:0.41"
 }
