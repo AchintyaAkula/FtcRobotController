@@ -11,10 +11,24 @@
 
 // Custom definitions may go here
 
+// Sloth load plugin
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://repo.dairy.foundation/releases"
+        }
+    }
+    dependencies {
+        classpath "dev.frozenmilk:Load:0.2.4"
+    }
+}
+
 // Include common definitions from above.
 apply from: '../build.common.gradle'
 apply from: '../build.dependencies.gradle'
 apply plugin: 'kotlin-android'
+apply plugin: 'dev.frozenmilk.sinister.sloth.load'
 
 kotlin {
   jvmToolchain(8)
@@ -28,6 +42,28 @@ android {
     }
 }
 
+repositories {
+    // Dairy maven repositories
+    maven { url "https://repo.dairy.foundation/releases" }
+    maven { url "https://repo.dairy.foundation/snapshots" }
+
+    // NextFTC snapshots repository
+    maven { url "https://central.sonatype.com/repository/maven-snapshots/" }
+}
+
 dependencies {
     implementation project(':FtcRobotController')
+
+    implementation 'com.acmerobotics.slothboard:dashboard:0.2.4+0.5.1'
+
+    implementation 'com.pedropathing:ftc:2.1.2'
+    implementation 'com.pedropathing:ivy:1.0.0'
+    implementation 'com.pedropathing:telemetry:1.0.0'
+
+    implementation 'dev.frozenmilk.dairy:MercurialFTC:2.0.0-beta9'
+    implementation 'dev.frozenmilk.sinister:Sloth:0.2.4'
+
+    implementation 'dev.nextftc.v2:robot:0.0.2-SNAPSHOT'
+
+    implementation 'page.j5155.AdvantageScope:lite:v26.0.0'
 }
