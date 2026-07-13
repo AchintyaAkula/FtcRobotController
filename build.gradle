@@ -11,11 +11,13 @@ buildscript {
     repositories {
         mavenCentral()
         google()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:8.7.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:6.25.0"
     }
 }
 
@@ -25,6 +27,22 @@ allprojects {
     repositories {
         mavenCentral()
         google()
+    }
+
+    apply plugin: "com.diffplug.spotless"
+
+    spotless {
+        kotlin {
+            // Target all Kotlin files across your project directory structure
+            target "TeamCode/src/main/java/**/*.kt"
+            targetExclude "**/build/**/*.kt", "**/.gradle/**/*.kt"
+
+            // ktlint is the official industry standard styling engine for Kotlin
+            ktlint()
+
+            trimTrailingWhitespace()
+            endWithNewline()
+        }
     }
 }
 

@@ -35,19 +35,21 @@ class IntakeMechanism : Mechanism {
      * Command to close the gate:
      *  Makes both servos go to the designated close position
      */
-    val closeGate: Command = parallel(
-        SetPosition(leftGateServo, GATE_CLOSE_POSITION_LEFT),
-        SetPosition(rightGateServo, GATE_CLOSE_POSITION_RIGHT)
-    )
+    val closeGate: Command =
+        parallel(
+            SetPosition(leftGateServo, GATE_CLOSE_POSITION_LEFT),
+            SetPosition(rightGateServo, GATE_CLOSE_POSITION_RIGHT),
+        )
 
     /**
      * Command to open the gate:
      *  Makes both servos go to the designated open position
      */
-    val openGate: Command = parallel(
-        SetPosition(leftGateServo, GATE_OPEN_POSITION_LEFT),
-        SetPosition(rightGateServo, GATE_OPEN_POSITION_RIGHT)
-    )
+    val openGate: Command =
+        parallel(
+            SetPosition(leftGateServo, GATE_OPEN_POSITION_LEFT),
+            SetPosition(rightGateServo, GATE_OPEN_POSITION_RIGHT),
+        )
 
     /**
      * Command to intake at full throttle -> 1.0
@@ -63,10 +65,11 @@ class IntakeMechanism : Mechanism {
      * Command to stop intaking:
      * Closes gate and then sets motor throttle to 0
      */
-    val stopIntake: Command = sequential(
-        closeGate,
-        SetThrottle(intakeMotor, 0.0)
-    )
+    val stopIntake: Command =
+        sequential(
+            closeGate,
+            SetThrottle(intakeMotor, 0.0),
+        )
 
     /**
      * Command supplier to return a Command that intakes at the specified throttle:
@@ -81,7 +84,7 @@ class IntakeMechanism : Mechanism {
         require(throttle != 0.0) { "intake(0.0) is invalid, use stopIntake instead" }
         return sequential(
             SetThrottle(intakeMotor, throttle),
-            openGate
+            openGate,
         )
     }
 
