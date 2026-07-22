@@ -65,9 +65,9 @@ dependencies {
     implementation 'dev.frozenmilk.dairy:MercurialFTC:2.0.0-beta9'
     implementation 'dev.frozenmilk.sinister:Sloth:0.2.4'
 
-    implementation 'dev.nextftc.v2:robot:0.1.0-rc.1-SNAPSHOT'
+    implementation 'dev.nextftc.v2:robot:0.1.0-rc.1'
 
-    implementation 'gay.zharel.fateweaver:ftc:0.4.0'
+    implementation 'gay.zharel.fateweaver:ftc:0.4.1'
 
     implementation 'page.j5155.AdvantageScope:lite:v26.0.0'
 }
