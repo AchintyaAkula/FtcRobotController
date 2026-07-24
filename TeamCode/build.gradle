@@ -30,16 +30,16 @@ apply from: '../build.dependencies.gradle'
 apply plugin: 'kotlin-android'
 apply plugin: 'dev.frozenmilk.sinister.sloth.load'
 
-kotlin {
-  jvmToolchain(8)
-}
-
 android {
     namespace = 'org.firstinspires.ftc.teamcode'
 
     packagingOptions {
         jniLibs.useLegacyPackaging true
     }
+}
+
+kotlin {
+  jvmToolchain(8)
 }
 
 repositories {
