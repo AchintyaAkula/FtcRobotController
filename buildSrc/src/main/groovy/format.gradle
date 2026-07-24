@@ -1,0 +1,40 @@
+plugins {
+    id 'com.diffplug.spotless'
+}
+
+spotless {
+    groovyGradle {
+        target "**/*.gradle"
+
+        greclipse()
+
+        leadingTabsToSpaces(4)
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    java {
+        target "TeamCode/src/main/**/*.java", "TeamCode/src/test/**/*.java"
+        targetExclude "**/build/**/*.java", "**/.gradle/**/*.java"
+
+        eclipse()
+                .configFile(rootProject.file('FormatConfig/java-format.xml'))
+
+        importOrder()
+        removeUnusedImports()
+        trimTrailingWhitespace()
+        endWithNewline()
+    }
+    kotlin {
+        target "TeamCode/src/main/**/*.kt", "TeamCode/src/main/**/*.kt"
+        targetExclude "**/build/**/*.kt", "**/.gradle/**/*.kt"
+
+        ktlint()
+                .setEditorConfigPath(rootProject.file('FormatConfig/.editorconfig'))
+    }
+    kotlinGradle {
+        target "**/*.gradle.kts"
+
+        ktlint()
+                .setEditorConfigPath(rootProject.file('FormatConfig/.editorConfig'))
+    }
+}

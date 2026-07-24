@@ -17,7 +17,11 @@
 
 import java.util.regex.Pattern
 
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+    id 'projectDeps'
+    id 'teamcodeDeps'
+}
 
 android {
 
@@ -110,7 +114,4 @@ android {
         pickFirst '**/*.so'
     }
     ndkVersion '21.3.6528147'
-}
-
-repositories {
 }
