@@ -1,4 +1,7 @@
-apply plugin: 'com.android.application'
+plugins {
+    id("com.android.application")
+    id("dev.achintyaakula.isa")
+}
 
 //
 // build.gradle in TeamCode
@@ -13,17 +16,21 @@ apply plugin: 'com.android.application'
 // Custom definitions may go here
 
 // Include common definitions from above.
-apply from: '../build.common.gradle'
-apply from: '../build.dependencies.gradle'
+apply(from = "../build.common.gradle")
+apply(from = "../build.dependencies.gradle")
 
 android {
-    namespace = 'org.firstinspires.ftc.teamcode'
+    namespace = "org.firstinspires.ftc.teamcode"
 
     packagingOptions {
-        jniLibs.useLegacyPackaging true
+        jniLibs.useLegacyPackaging = true
     }
 }
 
 dependencies {
-    implementation project(':FtcRobotController')
+    implementation(project(":FtcRobotController"))
+}
+
+ftc {
+    kotlin()
 }
